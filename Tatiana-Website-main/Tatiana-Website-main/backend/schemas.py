@@ -101,3 +101,84 @@ class BlogPostOut(BaseModel):
     number: str | None = None
     date: str | None = None
     read: str | None = None
+
+
+# ---- Painel: Workshops ----
+class WorkshopIn(BaseModel):
+    """Corpo de criação/edição. `slug` é opcional — gerado do título se omitido."""
+
+    slug: str | None = Field(default=None, max_length=200)
+    index_label: str | None = Field(default=None, max_length=10)
+    title: str = Field(min_length=1, max_length=250)
+    subtitle: str | None = Field(default=None, max_length=250)
+    tagline: str | None = None
+    description: str | None = None
+    long_description: str | None = None
+    period: str | None = Field(default=None, max_length=250)
+    cadence: str | None = Field(default=None, max_length=250)
+    schedule: list[str] = []
+    ages: str | None = Field(default=None, max_length=120)
+    seats: int | None = Field(default=None, ge=0)
+    price: str | None = Field(default=None, max_length=80)
+    price_note: str | None = None
+    location: str | None = Field(default=None, max_length=250)
+    requirements: str | None = None
+    cta: str | None = Field(default=None, max_length=120)
+    status: str | None = Field(default=None, max_length=80)
+    sort_order: int = 0
+    published: bool = True
+
+
+class WorkshopAdminOut(BaseModel):
+    model_config = ORM
+
+    id: uuid.UUID
+    slug: str
+    index_label: str | None = None
+    title: str
+    subtitle: str | None = None
+    tagline: str | None = None
+    description: str | None = None
+    long_description: str | None = None
+    period: str | None = None
+    cadence: str | None = None
+    schedule: list[str] = []
+    ages: str | None = None
+    seats: int | None = None
+    price: str | None = None
+    price_note: str | None = None
+    location: str | None = None
+    requirements: str | None = None
+    cta: str | None = None
+    status: str | None = None
+    sort_order: int
+    published: bool
+    created_at: datetime
+    updated_at: datetime
+
+
+# ---- Painel: Blog ----
+class BlogPostIn(BaseModel):
+    slug: str | None = Field(default=None, max_length=200)
+    title: str = Field(min_length=1, max_length=250)
+    excerpt: str | None = Field(default=None, max_length=500)
+    content_md: str = ""
+    cover_image_url: str | None = None
+    read_time: str | None = Field(default=None, max_length=40)
+    published: bool = False
+
+
+class BlogPostAdminOut(BaseModel):
+    model_config = ORM
+
+    id: uuid.UUID
+    slug: str
+    title: str
+    excerpt: str | None = None
+    content_md: str
+    cover_image_url: str | None = None
+    read_time: str | None = None
+    published: bool
+    published_at: datetime | None = None
+    created_at: datetime
+    updated_at: datetime

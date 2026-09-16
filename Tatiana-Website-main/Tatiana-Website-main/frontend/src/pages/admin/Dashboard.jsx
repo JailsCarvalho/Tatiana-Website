@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import api from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
@@ -11,6 +12,7 @@ const SECTIONS = [
     description: "Artigos do blog — escrever, editar e publicar.",
     endpoint: "/blog",
     unit: "artigo(s) publicado(s)",
+    href: "/admin/blog",
   },
   {
     key: "workshops",
@@ -19,6 +21,7 @@ const SECTIONS = [
     description: "Programas e imersões, com datas, vagas e inscrições.",
     endpoint: "/workshops",
     unit: "workshop(s) activo(s)",
+    href: "/admin/workshops",
   },
   {
     key: "aulas",
@@ -27,6 +30,7 @@ const SECTIONS = [
     description: "Técnicas do atelier e as galerias de vídeo de cada uma.",
     endpoint: "/aulas",
     unit: "técnica(s) no catálogo",
+    href: null, // chega na Fase 3
   },
 ];
 
@@ -105,9 +109,19 @@ export default function Dashboard() {
                   : `— ${counts[section.key]} ${section.unit}`}
             </div>
             <div className="col-span-12 md:col-span-2 md:text-right">
-              <span className="inline-block border border-black px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-black/50">
-                Em breve
-              </span>
+              {section.href ? (
+                <Link
+                  to={section.href}
+                  data-testid={`admin-section-link-${section.key}`}
+                  className="inline-block border border-black px-4 py-2 text-[10px] tracking-[0.28em] uppercase hover-invert"
+                >
+                  Gerir
+                </Link>
+              ) : (
+                <span className="inline-block border border-black px-4 py-2 text-[10px] tracking-[0.28em] uppercase text-black/50">
+                  Em breve
+                </span>
+              )}
             </div>
           </article>
         ))}

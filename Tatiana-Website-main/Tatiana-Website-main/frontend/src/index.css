@@ -217,6 +217,61 @@ a:focus-visible {
     min-height: 100svh;
 }
 
+/* ---------- Pré-visualização Markdown do editor de blog ---------- */
+.prose-admin {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+.prose-admin h1 {
+    font-size: 2.4rem;
+    line-height: 1;
+    margin: 0 0 0.6em;
+}
+.prose-admin h2 {
+    font-size: 1.8rem;
+    line-height: 1.05;
+    margin: 1.2em 0 0.5em;
+}
+.prose-admin h3 {
+    font-size: 1.4rem;
+    margin: 1em 0 0.4em;
+}
+.prose-admin p {
+    margin: 0 0 1em;
+}
+.prose-admin a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.prose-admin ul,
+.prose-admin ol {
+    margin: 0 0 1em 1.4em;
+}
+.prose-admin ul {
+    list-style: disc;
+}
+.prose-admin ol {
+    list-style: decimal;
+}
+.prose-admin blockquote {
+    border-left: 2px solid #000;
+    padding-left: 1em;
+    font-style: italic;
+    margin: 0 0 1em;
+}
+.prose-admin img {
+    max-width: 100%;
+    display: block;
+    margin: 1em 0;
+}
+.prose-admin code {
+    font-family: "Manrope", sans-serif;
+    background: #f0f0f0;
+    padding: 0.1em 0.35em;
+    font-size: 0.85em;
+}
+
 /* ---------- Lenis smooth scroll body class ---------- */
 html.lenis {
     height: auto;

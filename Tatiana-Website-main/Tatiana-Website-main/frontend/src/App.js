@@ -14,6 +14,10 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
 import AdminLogin from "@/pages/admin/Login";
 import AdminDashboard from "@/pages/admin/Dashboard";
+import WorkshopsList from "@/pages/admin/WorkshopsList";
+import WorkshopEditor from "@/pages/admin/WorkshopEditor";
+import BlogList from "@/pages/admin/BlogList";
+import BlogEditor from "@/pages/admin/BlogEditor";
 
 // O scroll suave (Lenis) pertence às páginas editoriais; no painel atrapalha
 // formulários e listas longas, por isso não é montado em /admin.
@@ -41,6 +45,12 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
+                <Route path="workshops" element={<WorkshopsList />} />
+                <Route path="workshops/novo" element={<WorkshopEditor />} />
+                <Route path="workshops/:id" element={<WorkshopEditor />} />
+                <Route path="blog" element={<BlogList />} />
+                <Route path="blog/novo" element={<BlogEditor />} />
+                <Route path="blog/:id" element={<BlogEditor />} />
               </Route>
             </Route>
           </Route>

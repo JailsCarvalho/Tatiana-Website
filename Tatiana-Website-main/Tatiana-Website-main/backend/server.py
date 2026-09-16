@@ -8,7 +8,7 @@ from fastapi import APIRouter, FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from database import engine
-from routers import auth, contact, content
+from routers import admin_blog, admin_workshops, auth, contact, content
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -35,6 +35,8 @@ async def root():
 api_router.include_router(auth.router)
 api_router.include_router(contact.router)
 api_router.include_router(content.router)
+api_router.include_router(admin_workshops.router)
+api_router.include_router(admin_blog.router)
 app.include_router(api_router)
 
 # Com autenticação por cookie, a origem tem de ser explícita: o browser recusa

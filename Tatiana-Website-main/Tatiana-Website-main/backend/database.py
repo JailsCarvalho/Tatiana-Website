@@ -19,6 +19,14 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 class Base(DeclarativeBase):
     """Base declarativa de todos os modelos."""
 
+    # Sem isto, colunas geradas pelo servidor (created_at, e sobretudo
+    # updated_at com onupdate=func.now()) ficam "expiradas" depois de um
+    # UPDATE — acedê-las na resposta dispara um load lazy que rebenta em
+    # código async ("MissingGreenlet: greenlet_spawn has not been called").
+    # Com eager_defaults, o próprio INSERT/UPDATE já devolve os valores via
+    # RETURNING, sem pedido extra.
+    __mapper_args__ = {"eager_defaults": True}
+
 
 # O endpoint com `-pooler` da Neon é um PgBouncer em transaction mode: não mantém
 # a sessão entre queries, por isso os prepared statements que o asyncpg guarda por
