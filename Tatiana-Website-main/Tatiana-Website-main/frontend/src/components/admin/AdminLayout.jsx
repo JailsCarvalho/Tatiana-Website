@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { to: "/admin", label: "Painel", end: true },
   { to: "/admin/blog", label: "Blog" },
   { to: "/admin/workshops", label: "Workshops" },
+  { to: "/admin/aulas", label: "Aulas" },
 ];
 
 export default function AdminLayout() {

@@ -52,6 +52,9 @@ __pycache__/
 venv/
 .venv/
 
+# Uploads locais do painel (dev only — produção usa Vercel Blob Storage)
+backend/uploads/
+
 # Development tools
 chainlit.md
 .chainlit

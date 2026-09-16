@@ -5,10 +5,12 @@ import os
 from contextlib import asynccontextmanager
 
 from fastapi import APIRouter, FastAPI
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
 from database import engine
-from routers import admin_blog, admin_workshops, auth, contact, content
+from routers import admin_aulas, admin_blog, admin_uploads, admin_workshops, auth, contact, content
+from storage import UPLOAD_DIR
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -37,7 +39,13 @@ api_router.include_router(contact.router)
 api_router.include_router(content.router)
 api_router.include_router(admin_workshops.router)
 api_router.include_router(admin_blog.router)
+api_router.include_router(admin_aulas.router)
+api_router.include_router(admin_uploads.router)
 app.include_router(api_router)
+
+# Ficheiros enviados pelo painel — só em desenvolvimento local (ver storage.py:
+# em produção na Vercel isto passa a Vercel Blob Storage, sem disco próprio).
+app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 # Com autenticação por cookie, a origem tem de ser explícita: o browser recusa
 # `allow_origins=["*"]` em conjunto com credenciais.

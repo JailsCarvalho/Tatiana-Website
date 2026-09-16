@@ -30,7 +30,7 @@ const SECTIONS = [
     description: "Técnicas do atelier e as galerias de vídeo de cada uma.",
     endpoint: "/aulas",
     unit: "técnica(s) no catálogo",
-    href: null, // chega na Fase 3
+    href: "/admin/aulas",
   },
 ];
 

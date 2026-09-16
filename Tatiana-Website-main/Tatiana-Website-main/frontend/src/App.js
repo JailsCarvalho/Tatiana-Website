@@ -18,6 +18,8 @@ import WorkshopsList from "@/pages/admin/WorkshopsList";
 import WorkshopEditor from "@/pages/admin/WorkshopEditor";
 import BlogList from "@/pages/admin/BlogList";
 import BlogEditor from "@/pages/admin/BlogEditor";
+import AulasList from "@/pages/admin/AulasList";
+import AulaEditor from "@/pages/admin/AulaEditor";
 
 // O scroll suave (Lenis) pertence às páginas editoriais; no painel atrapalha
 // formulários e listas longas, por isso não é montado em /admin.
@@ -51,6 +53,9 @@ function App() {
                 <Route path="blog" element={<BlogList />} />
                 <Route path="blog/novo" element={<BlogEditor />} />
                 <Route path="blog/:id" element={<BlogEditor />} />
+                <Route path="aulas" element={<AulasList />} />
+                <Route path="aulas/nova" element={<AulaEditor />} />
+                <Route path="aulas/:id" element={<AulaEditor />} />
               </Route>
             </Route>
           </Route>

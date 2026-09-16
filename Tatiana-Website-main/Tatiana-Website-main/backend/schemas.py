@@ -182,3 +182,42 @@ class BlogPostAdminOut(BaseModel):
     published_at: datetime | None = None
     created_at: datetime
     updated_at: datetime
+
+
+# ---- Painel: Aulas ----
+class AulaIn(BaseModel):
+    slug: str | None = Field(default=None, max_length=200)
+    number: str | None = Field(default=None, max_length=10)
+    title: str = Field(min_length=1, max_length=250)
+    level: str | None = Field(default=None, max_length=120)
+    question: str | None = None
+    summary: str | None = None
+    description: str | None = None
+    videos: list[str] = []
+    sort_order: int = 0
+    published: bool = True
+
+
+class AulaAdminOut(BaseModel):
+    model_config = ORM
+
+    id: uuid.UUID
+    slug: str
+    number: str | None = None
+    title: str
+    level: str | None = None
+    question: str | None = None
+    summary: str | None = None
+    description: str | None = None
+    videos: list[str] = []
+    sort_order: int
+    published: bool
+    created_at: datetime
+    updated_at: datetime
+
+
+# ---- Painel: Upload ----
+class UploadOut(BaseModel):
+    url: str
+    filename: str
+    size: int
