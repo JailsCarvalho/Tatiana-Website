@@ -1,6 +1,6 @@
 import React from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import SmoothScroll from "@/components/SmoothScroll";
 import Layout from "@/components/Layout";
@@ -9,12 +9,24 @@ import Sobre from "@/pages/Sobre";
 import Workshops from "@/pages/Workshops";
 import Aulas from "@/pages/Aulas";
 import Blog from "@/pages/Blog";
+import AdminRoot from "@/components/admin/AdminRoot";
+import AdminLayout from "@/components/admin/AdminLayout";
+import ProtectedRoute from "@/components/admin/ProtectedRoute";
+import AdminLogin from "@/pages/admin/Login";
+import AdminDashboard from "@/pages/admin/Dashboard";
+
+// O scroll suave (Lenis) pertence às páginas editoriais; no painel atrapalha
+// formulários e listas longas, por isso não é montado em /admin.
+function PublicSmoothScroll() {
+  const { pathname } = useLocation();
+  return pathname.startsWith("/admin") ? null : <SmoothScroll />;
+}
 
 function App() {
   return (
     <div className="App grain">
-      <SmoothScroll />
       <BrowserRouter>
+        <PublicSmoothScroll />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -22,6 +34,15 @@ function App() {
             <Route path="/workshops" element={<Workshops />} />
             <Route path="/aulas" element={<Aulas />} />
             <Route path="/blog" element={<Blog />} />
+          </Route>
+
+          <Route element={<AdminRoot />}>
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+              </Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
