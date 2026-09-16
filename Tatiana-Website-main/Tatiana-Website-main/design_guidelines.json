@@ -1,0 +1,157 @@
+{
+  "project_title": "Atelier & Galeria d'Arte - Plataforma Editorial de Ensino Artístico",
+  "archetype": "SWISS_EDITORIAL_MONOCHROME",
+  "language": "pt-PT",
+  "design_philosophy": {
+    "anti_ai_principles": [
+      "No rounded soft shadows or blurred colored halos - use sharp, crisp 1px solid borders and flat cardless geometry.",
+      "No generic AI emojis (🤖, 🧠, 💡, 🔮) or standard SaaS blue/purple gradients.",
+      "High-contrast stark monochrome palette (Pure Black #000000, Off-White #FAFAFA, Crisp White #FFFFFF, Tinted Muted Slate #171717 and #E5E5E5).",
+      "Asymmetric Swiss editorial layout with generous negative space (2-3x default padding) and exposed grid dividers.",
+      "Fluid line-mask reveal animations powered by GSAP and Framer Motion for cinematic presence.",
+      "Cormorant Garamond italic display serifs paired with ultra-clean Manrope geometric typography."
+    ],
+    "reference_style": "Kononenko Group (kononenkogroup.com) architectural precision, high editorial contrast, monolithic typography, strict line grids, noise grain overlay."
+  },
+  "color_palette": {
+    "background": "#FFFFFF",
+    "background_alt": "#FAFAFA",
+    "surface_dark": "#000000",
+    "foreground": "#000000",
+    "foreground_muted": "#525252",
+    "border_stark": "#000000",
+    "border_subtle": "#E5E5E5",
+    "border_dark_mode": "#262626",
+    "accent_hover": "#000000",
+    "text_on_dark": "#FFFFFF",
+    "rules": {
+      "gradients_allowed": false,
+      "shadows_allowed": false,
+      "emojis_allowed": false,
+      "border_radius": "0px everywhere (sharp edges)",
+      "header_background_rule": "Header MUST use semi-solid opaque or glass backdrop with explicit background bg-white/95 or bg-black/95. NEVER fully transparent without background."
+    }
+  },
+  "typography": {
+    "display_font": "Cormorant Garamond (Serif)",
+    "body_font": "Manrope (Sans-serif)",
+    "hierarchy": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-tight leading-[0.95]",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-serif tracking-tight leading-[1.05]",
+      "subsection_h3": "text-xl sm:text-2xl font-serif italic tracking-tight",
+      "card_h4": "text-lg sm:text-xl font-sans-editorial font-medium tracking-tight uppercase",
+      "label_overline": "num-marker text-[11px] tracking-[0.28em] uppercase font-semibold text-neutral-500",
+      "body": "text-sm sm:text-base font-sans-editorial font-light leading-relaxed text-neutral-800"
+    }
+  },
+  "indexed_videos": [
+    {
+      "id": "video-acrylic-gestures",
+      "title": "Pintura Acrílica: Gestos, Impasto e Camadas",
+      "technique": "Pintura Acrílica",
+      "duration": "02:45",
+      "url": "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/ifql64qo_Video-80918.mp4",
+      "description": "Demonstração prática de aplicação de tinta acrílica com espátula e pincel de cerda grossa, explorando a construção de texturas tridimensionais sobre tela.",
+      "featured_module": "Módulo 1: Fundamentos do Acrílico Contemporâneo"
+    },
+    {
+      "id": "video-brushwork-texture",
+      "title": "Técnicas de Pincelada e Textura no Atelier",
+      "technique": "Técnicas Mistas & Texturas",
+      "duration": "01:50",
+      "url": "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/fbqqpbmv_WhatsApp%20Video%202026-09-10%20at%2011.57.30%20%281%29.mp4",
+      "description": "Estudo minucioso dos ritmos manuais, pigmentação concentrada e secagem por velatura no processo de composição abstrata.",
+      "featured_module": "Módulo 2: Matéria e Superfície"
+    },
+    {
+      "id": "video-color-composition",
+      "title": "Estudo de Cor, Luz e Composição em Direto",
+      "technique": "Pintura & Teoria da Cor",
+      "duration": "03:15",
+      "url": "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/ji187igt_WhatsApp%20Video%202026-09-10%20at%2011.57.30.mp4",
+      "description": "Análise ao vivo da mistura de pigmentos primários e equilíbrio de valores tonais para criar profundidade dramática.",
+      "featured_module": "Módulo 3: Harmonias Cromáticas e Contraste"
+    }
+  ],
+  "image_urls": {
+    "hero_artwork": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1600&auto=format&fit=crop",
+    "atelier_workspace": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1600&auto=format&fit=crop",
+    "artist_portrait": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop",
+    "gallery_interior": "https://images.unsplash.com/photo-1577720580479-7d839d829c73?q=80&w=1600&auto=format&fit=crop",
+    "acrylic_painting": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop",
+    "oil_painting": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop",
+    "charcoal_drawing": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop",
+    "watercolor_art": "https://images.unsplash.com/photo-1579783928621-6a13d66a62d1?q=80&w=1200&auto=format&fit=crop",
+    "sculpture_workshop": "https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=1200&auto=format&fit=crop",
+    "exhibition_artwork_1": "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?q=80&w=1200&auto=format&fit=crop",
+    "exhibition_artwork_2": "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?q=80&w=1200&auto=format&fit=crop",
+    "blog_article_1": "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop",
+    "blog_article_2": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop"
+  },
+  "pages_breakdown": {
+    "home": {
+      "route": "/",
+      "title": "Home - Galeria & Espaço de Ensino Artístico",
+      "key_sections": [
+        "Editorial Header with logo 'ATELIER & GALERIA' and clear nav links in pt-PT",
+        "Hero Section: Masked large serif heading 'ARTE COMO ESPAÇO DE TRANSFORMAÇÃO' + line grid + high contrast imagery",
+        "Demonstration Video Grid featuring the 3 indexed videos with direct playback modal / video player integration",
+        "Curated Exhibition Highlights (Obra 01, Obra 02, Obra 03) with interactive detail drawers",
+        "Overview of Disciplines & Aulas Teóricas e Práticas",
+        "Próximos Workshops em Destaque (Lisboa, Porto, Atelier)",
+        "Artist Manifesto & Philosophy Quote Block",
+        "Newsletter Subscription box for upcoming exhibitions and class openings"
+      ]
+    },
+    "sobre": {
+      "route": "/sobre",
+      "title": "Sobre Mim - Filosofia e Trajetória Artística",
+      "key_sections": [
+        "Editorial Portrait & Artist Biography",
+        "Artistic Philosophy: 'O Gesto, a Matéria e o Silêncio da Tela'",
+        "Timeline of Exhibitions & Recognition (2018–2026)",
+        "Inside the Atelier: Photo gallery of workspace, pigments, canvases and tools",
+        "Press & Critical Essay Extracts"
+      ]
+    },
+    "workshops": {
+      "route": "/workshops",
+      "title": "Workshops Imersivos de Arte",
+      "key_sections": [
+        "Header with filter by technique (Todos, Pintura Acrílica, Escultura, Gravura, Mistas)",
+        "Interactive Workshop Cards with dates, duration, location (Atelier Lisboa / Atelier Porto), and capacity status",
+        "Detailed Workshop Drawer / Modal with full schedule, materials list, tutor info and booking form",
+        "Inaugural Masterclass Teaser & Private Group Booking Inquiry"
+      ]
+    },
+    "aulas": {
+      "route": "/aulas",
+      "title": "Aulas & Cursos de Técnica Artística (Redesign Escalável)",
+      "key_sections": [
+        "Redesigned Scalable Architecture allowing infinite future courses (Pintura Acrílica, Pintura a Óleo, Desenho & Carvão, Aquarela, Técnicas Mistas)",
+        "Course Filter Tabs by Discipline & Skill Level (Iniciante, Intermédio, Avançado)",
+        "Featured Course Card: 'Pintura Acrílica para Iniciantes' with full syllabus breakdown (Módulo 1 a 4)",
+        "Video Demonstration Gallery showcasing the 3 indexed video assets with interactive modal player and technique notes",
+        "Interactive Course Schedule & Registration Form (Select class day, hour slot, modality: Presencial / Híbrido)",
+        "Technique Comparison Matrix (Materiais, Duração, Pré-requisitos)",
+        "Student Testimonials & Gallery of Student Works"
+      ]
+    },
+    "blog": {
+      "route": "/blog",
+      "title": "Caderno d'Arte - Blog & Ensaios Críticos",
+      "key_sections": [
+        "Editorial Blog Header with search input and category filter (Crítica, Técnica, Processo, Entrevistas)",
+        "Featured Essay with large editorial image and reading time",
+        "Grid of Art Articles & Studio Notes with instant reader modal",
+        "Author signature block and RSS / Newsletter signup"
+      ]
+    }
+  },
+  "technical_and_testing_rules": {
+    "data_testid_requirement": "EVERY interactive element (buttons, tabs, video triggers, modal closes, inputs, filter chips, nav links) MUST have explicit data-testid in kebab-case format.",
+    "file_extension": ".js / .jsx",
+    "accessibility": "Ensure high contrast black-and-white text readability (WCAG AAA compliant), proper ARIA labels for modal overlays and video players.",
+    "state_management": "Use React state and custom modals for seamless non-disruptive user interactions without full page reloads."
+  }
+}

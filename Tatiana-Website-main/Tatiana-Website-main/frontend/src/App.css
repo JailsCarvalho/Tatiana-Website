@@ -1,0 +1,6 @@
+/* legacy CRA styles replaced by index.css tokens */
+.App {
+    min-height: 100vh;
+    background: #ffffff;
+    color: #000000;
+}
