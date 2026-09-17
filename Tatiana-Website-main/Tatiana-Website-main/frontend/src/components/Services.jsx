@@ -56,16 +56,19 @@ export default function Services() {
         <p className="col-span-12 md:col-span-3 num-marker text-black/60">
           — Como funciona o atelier
         </p>
-        <motion.h2
+        <motion.p
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-          className="col-span-12 md:col-span-9 display text-5xl md:text-7xl lg:text-8xl"
+          className="col-span-12 md:col-span-9 font-serif text-2xl md:text-3xl leading-snug text-black/85"
         >
-          Funcionamento do <span className="italic">atelier</span><br />
-          por aula de desenho.
-        </motion.h2>
+          No Galeria-Atelier Ícone, cada aluno encontra um espaço acolhedor e de
+          luz natural, onde aprende ao seu ritmo e desenvolve o seu potencial
+          artístico com acompanhamento personalizado. As aulas frequentam-se
+          uma ou mais vezes por semana, consoante a disponibilidade de cada
+          um — material incluído no valor mensal.
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black">
