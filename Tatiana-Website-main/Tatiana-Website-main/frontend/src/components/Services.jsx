@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import AtelierGallery from "@/components/AtelierGallery";
 
 const services = [
   {
@@ -25,13 +26,16 @@ const services = [
   },
   {
     n: "03",
-    title: "Atelier livre",
-    subtitle: "Sessões de modelo & prática livre",
-    text:
-      "Sessões abertas onde artistas e alunos usam o espaço, o material e o modelo vivo. Sem professor a dirigir — apenas tempo, luz e outros que também pintam.",
+    title: "Preparação para Exame — Desenho 12.º Ano",
+    subtitle: "Exame Nacional · Desenho A",
+    text: [
+      "Preparação específica para o Exame Nacional de Desenho A, destinada a alunos do 12.º ano que pretendem desenvolver e aperfeiçoar as suas competências de desenho.",
+      "Trabalhamos observação, proporção, composição, perspectiva, representação do espaço, luz e sombra, figura humana e diferentes técnicas e materiais, de acordo com as exigências do exame.",
+      "Um acompanhamento personalizado, com exercícios práticos e orientação individual, para ajudar cada aluno a ganhar confiança, desenvolver uma linguagem própria e chegar ao exame mais preparado.",
+    ],
     to: "/aulas",
-    cta: "Marcar visita",
-    for: "Para artistas em prática regular.",
+    cta: "Marcar aula",
+    for: "Para alunos do 12.º ano em preparação para o exame.",
   },
   {
     n: "04",
@@ -52,23 +56,32 @@ export default function Services() {
       data-testid="services"
       className="border-t border-black px-6 md:px-10 py-24 md:py-40"
     >
-      <div className="grid grid-cols-12 gap-6 md:gap-10 mb-16 md:mb-24">
-        <p className="col-span-12 md:col-span-3 num-marker text-black/60">
-          — Como funciona o atelier
-        </p>
-        <motion.p
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-16 md:mb-24 items-start">
+        <div>
+          <p className="num-marker text-black/60 mb-6">— Como funciona o atelier</p>
+          <motion.p
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+            className="font-serif text-2xl md:text-3xl leading-snug text-black/85"
+          >
+            No Galeria-Atelier Ícone, cada aluno encontra um espaço acolhedor e de
+            luz natural, onde aprende ao seu ritmo e desenvolve o seu potencial
+            artístico com acompanhamento personalizado. As aulas frequentam-se
+            uma ou mais vezes por semana, consoante a disponibilidade de cada
+            um — material incluído no valor mensal.
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-          className="col-span-12 md:col-span-9 font-serif text-2xl md:text-3xl leading-snug text-black/85"
+          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
         >
-          No Galeria-Atelier Ícone, cada aluno encontra um espaço acolhedor e de
-          luz natural, onde aprende ao seu ritmo e desenvolve o seu potencial
-          artístico com acompanhamento personalizado. As aulas frequentam-se
-          uma ou mais vezes por semana, consoante a disponibilidade de cada
-          um — material incluído no valor mensal.
-        </motion.p>
+          <AtelierGallery />
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black">
@@ -93,9 +106,16 @@ export default function Services() {
             <h3 className="display text-4xl md:text-5xl lg:text-6xl leading-none mb-6 group-hover:italic transition-all duration-500">
               {s.title}
             </h3>
-            <p className="font-serif text-lg md:text-xl leading-snug text-black/80 max-w-xl">
-              {s.text}
-            </p>
+            {(Array.isArray(s.text) ? s.text : [s.text]).map((paragraph, idx) => (
+              <p
+                key={idx}
+                className={`font-serif text-lg md:text-xl leading-snug text-black/80 max-w-xl ${
+                  idx > 0 ? "mt-4" : ""
+                }`}
+              >
+                {paragraph}
+              </p>
+            ))}
             <p className="mt-6 num-marker text-black/60">— {s.for}</p>
             <Link
               to={s.to}

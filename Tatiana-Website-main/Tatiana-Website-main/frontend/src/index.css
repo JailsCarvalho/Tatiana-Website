@@ -217,6 +217,15 @@ a:focus-visible {
     min-height: 100svh;
 }
 
+/* ---------- Scroll lateral sem barra visível (galerias de fotos) ---------- */
+.no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
 /* ---------- Pré-visualização Markdown do editor de blog ---------- */
 .prose-admin {
     font-family: "Cormorant Garamond", serif;
