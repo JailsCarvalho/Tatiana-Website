@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import api from "@/lib/api";
 import { Field, TextInput, TextArea, PublishedToggle } from "@/components/admin/FormField";
 import ConfirmButton from "@/components/admin/ConfirmButton";
+import MediaUploader from "@/components/admin/MediaUploader";
 
 const EMPTY = {
   title: "",
@@ -108,8 +109,12 @@ export default function BlogEditor() {
         <Field label="Resumo" wide hint="Mostrado na listagem do blog.">
           <TextArea rows={2} value={form.excerpt} onChange={update("excerpt")} />
         </Field>
-        <Field label="Imagem de capa" hint="URL de uma imagem já publicada algures.">
-          <TextInput value={form.cover_image_url} onChange={update("cover_image_url")} placeholder="https://…" />
+        <Field label="Imagem de capa" wide hint="Carregada directamente do computador — imagem ou vídeo.">
+          <MediaUploader
+            value={form.cover_image_url}
+            onChange={(url) => setForm((current) => ({ ...current, cover_image_url: url }))}
+            testid="blog-cover"
+          />
         </Field>
         <Field label="Tempo de leitura" hint="Ex.: 4 min">
           <TextInput value={form.read_time} onChange={update("read_time")} />

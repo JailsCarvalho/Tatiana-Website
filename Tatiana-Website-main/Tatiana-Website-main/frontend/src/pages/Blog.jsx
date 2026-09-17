@@ -5,11 +5,14 @@ import Seo from "@/components/Seo";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
-const thumbs = [
+// Placeholder para artigos sem imagem de capa carregada no painel.
+const FALLBACK_THUMBS = [
   "https://images.pexels.com/photos/2218452/pexels-photo-2218452.jpeg",
   "https://images.pexels.com/photos/11429042/pexels-photo-11429042.jpeg",
   "https://images.pexels.com/photos/16397789/pexels-photo-16397789.jpeg",
 ];
+
+const VIDEO_EXT = /\.(mp4|webm|mov)(\?|$)/i;
 
 export default function Blog() {
   const [items, setItems] = useState([]);
@@ -76,11 +79,30 @@ export default function Blog() {
                 data-testid={`blog-${p.id}`}
               >
                 <div className="spotlight overflow-hidden border border-black">
-                  <img
-                    src={thumbs[i % thumbs.length]}
-                    alt=""
-                    className="w-full h-64 md:h-72 object-cover"
-                  />
+                  {p.cover_image_url ? (
+                    VIDEO_EXT.test(p.cover_image_url) ? (
+                      <video
+                        src={p.cover_image_url}
+                        className="w-full h-64 md:h-72 object-cover"
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                      />
+                    ) : (
+                      <img
+                        src={p.cover_image_url}
+                        alt=""
+                        className="w-full h-64 md:h-72 object-cover"
+                      />
+                    )
+                  ) : (
+                    <img
+                      src={FALLBACK_THUMBS[i % FALLBACK_THUMBS.length]}
+                      alt=""
+                      className="w-full h-64 md:h-72 object-cover"
+                    />
+                  )}
                 </div>
                 <div className="mt-5 flex items-baseline justify-between num-marker text-black/60">
                   <span>{p.number}</span>

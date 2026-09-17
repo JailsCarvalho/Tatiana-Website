@@ -136,7 +136,7 @@ export default function VideoGallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center"
             onClick={() => setOpenIndex(null)}
             data-testid="workshop-video-lightbox"
           >
@@ -171,7 +171,7 @@ export default function VideoGallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-              className="relative w-full max-w-5xl aspect-video border border-white/30 bg-black"
+              className="relative flex flex-col items-center gap-4 px-4 md:px-20 max-w-full"
               onClick={(e) => e.stopPropagation()}
             >
               <video
@@ -180,9 +180,9 @@ export default function VideoGallery() {
                 autoPlay
                 controls
                 playsInline
-                className="w-full h-full object-contain"
+                className="max-w-full max-h-[78vh] w-auto h-auto object-contain"
               />
-              <div className="absolute -bottom-8 left-0 right-0 flex justify-between num-marker text-white/80">
+              <div className="flex justify-between w-full max-w-3xl num-marker text-white/80">
                 <span>N.º {String(openIndex + 1).padStart(2, "0")} · Workshop Verão</span>
                 <span>{openIndex + 1} / {videos.length}</span>
               </div>

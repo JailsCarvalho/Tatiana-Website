@@ -95,7 +95,7 @@ export default function LessonVideoGallery({ videos, courseTitle }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpenIndex(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-5 md:p-12"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90"
             data-testid="aulas-video-lightbox"
           >
             <button
@@ -112,10 +112,10 @@ export default function LessonVideoGallery({ videos, courseTitle }) {
               exit={{ scale: 0.97, opacity: 0 }}
               transition={{ duration: 0.35 }}
               onClick={(event) => event.stopPropagation()}
-              className="w-full max-w-5xl border border-white/30 bg-black"
+              className="flex flex-col items-center gap-3 px-4 md:px-16 max-w-full"
             >
-              <video src={videos[openIndex]} autoPlay controls playsInline className="block aspect-video w-full object-contain" />
-              <p className="border-t border-white/30 px-4 py-3 num-marker text-white/70" data-testid="aulas-video-lightbox-caption">
+              <video src={videos[openIndex]} autoPlay controls playsInline className="max-w-full max-h-[78vh] w-auto h-auto object-contain" />
+              <p className="num-marker text-white/70" data-testid="aulas-video-lightbox-caption">
                 {courseTitle} · vídeo {openIndex + 1} de {videos.length}
               </p>
             </motion.div>
