@@ -1,6 +1,6 @@
 """Leitura pública do conteúdo editável no painel (workshops, aulas, blog)."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -49,3 +49,17 @@ async def get_blog(session: AsyncSession = Depends(get_session)):
         items.append(post.model_dump(by_alias=True, mode="json"))
 
     return {"items": items}
+
+
+@router.get("/blog/{slug}")
+async def get_blog_post(slug: str, session: AsyncSession = Depends(get_session)):
+    row = await session.scalar(
+        select(BlogPost).where(BlogPost.slug == slug, BlogPost.published.is_(True))
+    )
+    if row is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Artigo não encontrado.")
+
+    post = BlogPostOut.model_validate(row)
+    post.date = row.published_at.strftime("%d.%m.%Y") if row.published_at else ""
+    post.read = row.read_time
+    return post.model_dump(by_alias=True, mode="json")

@@ -9,6 +9,7 @@ import Sobre from "@/pages/Sobre";
 import Workshops from "@/pages/Workshops";
 import Aulas from "@/pages/Aulas";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import AdminRoot from "@/components/admin/AdminRoot";
 import AdminLayout from "@/components/admin/AdminLayout";
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
@@ -40,6 +41,7 @@ function App() {
             <Route path="/workshops" element={<Workshops />} />
             <Route path="/aulas" element={<Aulas />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Route>
 
           <Route element={<AdminRoot />}>

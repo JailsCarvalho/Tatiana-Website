@@ -227,54 +227,54 @@ a:focus-visible {
 }
 
 /* ---------- Pré-visualização Markdown do editor de blog ---------- */
-.prose-admin {
+.prose-article {
     font-family: "Cormorant Garamond", serif;
     font-size: 1.15rem;
     line-height: 1.6;
 }
-.prose-admin h1 {
+.prose-article h1 {
     font-size: 2.4rem;
     line-height: 1;
     margin: 0 0 0.6em;
 }
-.prose-admin h2 {
+.prose-article h2 {
     font-size: 1.8rem;
     line-height: 1.05;
     margin: 1.2em 0 0.5em;
 }
-.prose-admin h3 {
+.prose-article h3 {
     font-size: 1.4rem;
     margin: 1em 0 0.4em;
 }
-.prose-admin p {
+.prose-article p {
     margin: 0 0 1em;
 }
-.prose-admin a {
+.prose-article a {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
-.prose-admin ul,
-.prose-admin ol {
+.prose-article ul,
+.prose-article ol {
     margin: 0 0 1em 1.4em;
 }
-.prose-admin ul {
+.prose-article ul {
     list-style: disc;
 }
-.prose-admin ol {
+.prose-article ol {
     list-style: decimal;
 }
-.prose-admin blockquote {
+.prose-article blockquote {
     border-left: 2px solid #000;
     padding-left: 1em;
     font-style: italic;
     margin: 0 0 1em;
 }
-.prose-admin img {
+.prose-article img {
     max-width: 100%;
     display: block;
     margin: 1em 0;
 }
-.prose-admin code {
+.prose-article code {
     font-family: "Manrope", sans-serif;
     background: #f0f0f0;
     padding: 0.1em 0.35em;

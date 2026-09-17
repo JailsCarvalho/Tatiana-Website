@@ -156,7 +156,7 @@ export default function BlogEditor() {
                 />
               ) : (
                 <div
-                  className="prose-admin min-h-[16rem] border-b border-black/20 py-3"
+                  className="prose-article min-h-[16rem] border-b border-black/20 py-3"
                   data-testid="blog-content-preview"
                 >
                   {form.content_md.trim() ? (

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Seo from "@/components/Seo";
+
+const MotionLink = motion(Link);
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -69,13 +72,14 @@ export default function Blog() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {items.map((p, i) => (
-              <motion.article
+              <MotionLink
+                to={`/blog/${p.slug}`}
                 key={p.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.8, delay: (i % 3) * 0.08, ease: [0.19, 1, 0.22, 1] }}
-                className="flex flex-col group cursor-default"
+                className="flex flex-col group"
                 data-testid={`blog-${p.id}`}
               >
                 <div className="spotlight overflow-hidden border border-black">
@@ -115,7 +119,7 @@ export default function Blog() {
                   {p.excerpt}
                 </p>
                 <p className="mt-4 num-marker text-black/50">Leitura · {p.read}</p>
-              </motion.article>
+              </MotionLink>
             ))}
           </div>
         )}
