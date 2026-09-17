@@ -1,10 +1,13 @@
 import React from "react";
 
 /** Linha de formulário no estilo do site: rótulo à esquerda, campo à direita, traço em baixo. */
-export function Field({ label, children, hint, wide = false }) {
+export function Field({ label, children, hint, wide = false, required = false }) {
   return (
     <div className="grid grid-cols-12 gap-4 border-b border-black py-4 items-start">
-      <span className="col-span-12 md:col-span-3 num-marker text-black/60 pt-3">— {label}</span>
+      <span className="col-span-12 md:col-span-3 num-marker text-black/60 pt-3">
+        — {label}
+        {required && <span aria-hidden="true"> *</span>}
+      </span>
       <div className={`col-span-12 ${wide ? "md:col-span-9" : "md:col-span-6"}`}>
         {children}
         {hint && <p className="mt-2 text-xs leading-relaxed text-black/45">{hint}</p>}

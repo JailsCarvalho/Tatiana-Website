@@ -97,8 +97,13 @@ export default function BlogEditor() {
       </div>
 
       <form onSubmit={onSubmit} className="mt-12 border-t border-black" data-testid="blog-form">
-        <Field label="Título">
-          <TextInput value={form.title} onChange={update("title")} data-testid="blog-title-input" />
+        <Field label="Título" required>
+          <TextInput
+            value={form.title}
+            onChange={update("title")}
+            data-testid="blog-title-input"
+            required
+          />
         </Field>
         <Field label="Resumo" wide hint="Mostrado na listagem do blog.">
           <TextArea rows={2} value={form.excerpt} onChange={update("excerpt")} />

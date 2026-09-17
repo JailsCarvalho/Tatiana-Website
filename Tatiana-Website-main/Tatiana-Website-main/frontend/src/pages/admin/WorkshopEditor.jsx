@@ -137,8 +137,13 @@ export default function WorkshopEditor() {
       </div>
 
       <form onSubmit={onSubmit} className="mt-12 border-t border-black" data-testid="workshop-form">
-        <Field label="Título">
-          <TextInput value={form.title} onChange={update("title")} data-testid="workshop-title-input" />
+        <Field label="Título" required>
+          <TextInput
+            value={form.title}
+            onChange={update("title")}
+            data-testid="workshop-title-input"
+            required
+          />
         </Field>
         <Field label="Subtítulo">
           <TextInput value={form.subtitle} onChange={update("subtitle")} />
@@ -189,7 +194,7 @@ export default function WorkshopEditor() {
           <TextInput value={form.status} onChange={update("status")} />
         </Field>
         <Field label="Ordem" hint="Workshops com número menor aparecem primeiro.">
-          <TextInput type="number" value={form.sort_order} onChange={update("sort_order")} />
+          <TextInput type="number" min="0" value={form.sort_order} onChange={update("sort_order")} />
         </Field>
 
         <div className="flex flex-wrap items-center justify-between gap-4 py-8">

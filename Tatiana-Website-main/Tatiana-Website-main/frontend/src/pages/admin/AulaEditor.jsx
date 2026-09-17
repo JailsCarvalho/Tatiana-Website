@@ -108,8 +108,13 @@ export default function AulaEditor() {
       </div>
 
       <form onSubmit={onSubmit} className="mt-12 border-t border-black" data-testid="aula-form">
-        <Field label="Título">
-          <TextInput value={form.title} onChange={update("title")} data-testid="aula-title-input" />
+        <Field label="Título" required>
+          <TextInput
+            value={form.title}
+            onChange={update("title")}
+            data-testid="aula-title-input"
+            required
+          />
         </Field>
         <Field label="Número" hint="Ex.: 01 — mostrado na lista de técnicas.">
           <TextInput value={form.number} onChange={update("number")} />
@@ -127,7 +132,7 @@ export default function AulaEditor() {
           <TextArea rows={3} value={form.description} onChange={update("description")} />
         </Field>
         <Field label="Ordem" hint="Técnicas com número menor aparecem primeiro na lista.">
-          <TextInput type="number" value={form.sort_order} onChange={update("sort_order")} />
+          <TextInput type="number" min="0" value={form.sort_order} onChange={update("sort_order")} />
         </Field>
 
         <div className="border-b border-black py-4">

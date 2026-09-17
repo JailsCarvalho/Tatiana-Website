@@ -107,6 +107,11 @@ class BlogPostOut(BaseModel):
 class WorkshopIn(BaseModel):
     """Corpo de criação/edição. `slug` é opcional — gerado do título se omitido."""
 
+    # str_strip_whitespace: sem isto, min_length=1 deixa passar um título só com
+    # espaços — o frontend já apara antes de submeter, isto é a rede de segurança
+    # para quem chamar a API directamente.
+    model_config = ConfigDict(str_strip_whitespace=True)
+
     slug: str | None = Field(default=None, max_length=200)
     index_label: str | None = Field(default=None, max_length=10)
     title: str = Field(min_length=1, max_length=250)
@@ -125,7 +130,7 @@ class WorkshopIn(BaseModel):
     requirements: str | None = None
     cta: str | None = Field(default=None, max_length=120)
     status: str | None = Field(default=None, max_length=80)
-    sort_order: int = 0
+    sort_order: int = Field(default=0, ge=0)
     published: bool = True
 
 
@@ -159,6 +164,8 @@ class WorkshopAdminOut(BaseModel):
 
 # ---- Painel: Blog ----
 class BlogPostIn(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+
     slug: str | None = Field(default=None, max_length=200)
     title: str = Field(min_length=1, max_length=250)
     excerpt: str | None = Field(default=None, max_length=500)
@@ -186,6 +193,8 @@ class BlogPostAdminOut(BaseModel):
 
 # ---- Painel: Aulas ----
 class AulaIn(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+
     slug: str | None = Field(default=None, max_length=200)
     number: str | None = Field(default=None, max_length=10)
     title: str = Field(min_length=1, max_length=250)
@@ -194,7 +203,7 @@ class AulaIn(BaseModel):
     summary: str | None = None
     description: str | None = None
     videos: list[str] = []
-    sort_order: int = 0
+    sort_order: int = Field(default=0, ge=0)
     published: bool = True
 
 
