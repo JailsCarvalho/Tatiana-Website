@@ -20,7 +20,7 @@ export default function Blog() {
   return (
     <div data-testid="page-blog">
       <Seo
-        title="Diário de Bordo | Atelier Galeria Ícone Coimbra"
+        title="Agenda | Atelier Galeria Ícone Coimbra"
         description="Notas de estúdio do Atelier Galeria Ícone em Coimbra — reflexões sobre pintura, desenho e a vida do atelier."
         path="/blog"
         keywords="Atelier de pintura em Coimbra, Aulas de arte em Coimbra, cultura Coimbra, agenda cultural Coimbra"
@@ -36,7 +36,7 @@ export default function Blog() {
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
             className="col-span-12 md:col-span-9 display text-6xl md:text-8xl lg:text-9xl"
           >
-            Diário <span className="italic">de bordo</span>
+            Agenda
           </motion.h1>
         </div>
       </section>

@@ -6,7 +6,7 @@ const links = [
   { to: "/sobre", label: "Sobre" },
   { to: "/workshops", label: "Workshops" },
   { to: "/aulas", label: "Aulas" },
-  { to: "/blog", label: "Blog" },
+  { to: "/blog", label: "Agenda" },
 ];
 
 export default function Nav() {

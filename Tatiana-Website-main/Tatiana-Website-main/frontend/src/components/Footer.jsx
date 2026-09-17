@@ -111,7 +111,7 @@ export default function Footer() {
               <li><Link className="link-underline" to="/sobre">Sobre</Link></li>
               <li><Link className="link-underline" to="/workshops">Workshops</Link></li>
               <li><Link className="link-underline" to="/aulas">Aulas</Link></li>
-              <li><Link className="link-underline" to="/blog">Diário</Link></li>
+              <li><Link className="link-underline" to="/blog">Agenda</Link></li>
             </ul>
           </div>
           <div className="col-span-6 md:col-span-3">

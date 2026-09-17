@@ -8,8 +8,8 @@ const SECTIONS = [
   {
     key: "blog",
     number: "01",
-    title: "Diário de bordo",
-    description: "Artigos do blog — escrever, editar e publicar.",
+    title: "Agenda",
+    description: "Artigos da agenda — escrever, editar e publicar.",
     endpoint: "/blog",
     unit: "artigo(s) publicado(s)",
     href: "/admin/blog",

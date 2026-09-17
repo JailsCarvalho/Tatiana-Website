@@ -31,12 +31,12 @@ export default function BlogList() {
 
   return (
     <main className="px-6 md:px-10 py-14 md:py-20" data-testid="page-admin-blog">
-      <title>Diário de bordo · Painel</title>
+      <title>Agenda · Painel</title>
 
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="num-marker text-black/60">— Painel</p>
-          <h1 className="mt-4 display text-5xl md:text-6xl leading-[0.9]">Diário de bordo</h1>
+          <h1 className="mt-4 display text-5xl md:text-6xl leading-[0.9]">Agenda</h1>
         </div>
         <Link
           to="/admin/blog/novo"

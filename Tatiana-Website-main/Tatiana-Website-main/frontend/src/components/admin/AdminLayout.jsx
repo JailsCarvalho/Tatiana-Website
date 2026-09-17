@@ -5,7 +5,7 @@ import { LOGOUT } from "@/constants/testIds";
 
 const NAV_ITEMS = [
   { to: "/admin", label: "Painel", end: true },
-  { to: "/admin/blog", label: "Blog" },
+  { to: "/admin/blog", label: "Agenda" },
   { to: "/admin/workshops", label: "Workshops" },
   { to: "/admin/aulas", label: "Aulas" },
 ];

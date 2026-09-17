@@ -87,7 +87,7 @@ export default function BlogEditor() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <Link to="/admin/blog" className="num-marker link-underline text-black/60">
-            ← Diário de bordo
+            ← Agenda
           </Link>
           <h1 className="mt-4 display text-4xl md:text-5xl leading-[0.95]">
             {isNew ? "Novo artigo" : form.title || "Editar artigo"}
