@@ -67,7 +67,26 @@ def _guess_content_type(name: str) -> str:
 
 
 def blob_configured() -> bool:
-    return bool(os.environ.get("BLOB_READ_WRITE_TOKEN"))
+    # O SDK aceita qualquer um dos dois nomes; ao ligar um Blob store a Vercel
+    # nem sempre cria exactamente `BLOB_READ_WRITE_TOKEN`.
+    return bool(
+        os.environ.get("BLOB_READ_WRITE_TOKEN")
+        or os.environ.get("VERCEL_BLOB_READ_WRITE_TOKEN")
+    )
+
+
+def _require_writable_disk() -> None:
+    """Falha cedo e por palavras claras quando não há disco nem Blob store.
+
+    Numa função serverless o disco é só de leitura: sem token de Blob o upload
+    não tem para onde ir, e sem isto rebentava com um FileNotFoundError que não
+    diz nada a quem está no painel.
+    """
+    if not UPLOAD_DIR.is_dir():
+        raise ValueError(
+            "Armazenamento de ficheiros não configurado: falta ligar um Blob "
+            "store da Vercel a este projecto (a variável BLOB_READ_WRITE_TOKEN)."
+        )
 
 
 # ---------------------------------------------------------------- pedido único
@@ -92,6 +111,7 @@ async def save_upload(file: UploadFile, *, base_url: str) -> UploadResult:
 
 
 def _disk_save(name: str, data: bytes, base_url: str) -> UploadResult:
+    _require_writable_disk()
     (UPLOAD_DIR / name).write_bytes(data)
     return {"url": f"{base_url}/uploads/{name}", "filename": name, "size": len(data)}
 
@@ -133,6 +153,7 @@ async def multipart_start(filename: str) -> MultipartSession:
 
     # Local: não há nada para inicializar do lado do servidor de blob — o
     # ficheiro é composto em disco à medida que as partes chegam, por ordem.
+    _require_writable_disk()
     return {"upload_id": key, "key": key}
 
 
