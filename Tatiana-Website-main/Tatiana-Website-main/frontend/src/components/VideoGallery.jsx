@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const videos = [
-  "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/a5xvhhv0_WhatsApp%20Video%202026-09-10%20at%2011.28.28%20%281%29.mp4",
   "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/6k6w8xfb_WhatsApp%20Video%202026-07-21%20at%2013.49.17.mp4",
   "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/gn36g2fo_WhatsApp%20Video%202026-07-21%20at%2014.58.24.mp4",
   "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/bbxiokl6_WhatsApp%20Video%202026-07-21%20at%2015.00.17.mp4",
@@ -101,21 +100,6 @@ export default function VideoGallery() {
       data-testid="workshop-video-gallery"
       className="border-t border-black px-6 md:px-10 py-24 md:py-40"
     >
-      <div className="grid grid-cols-12 gap-6 md:gap-10 mb-16 md:mb-20">
-        <p className="col-span-12 md:col-span-3 num-marker text-black/60">
-          — Verão · edições anteriores
-        </p>
-        <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-          className="col-span-12 md:col-span-9 display text-5xl md:text-7xl lg:text-8xl"
-        >
-          O <span className="italic">atelier</span> em movimento
-        </motion.h2>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
         {videos.map((src, i) => (
           <VideoThumb
