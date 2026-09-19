@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Seo from "@/components/Seo";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const MotionLink = motion(Link);
 
@@ -19,8 +20,12 @@ const VIDEO_EXT = /\.(mp4|webm|mov)(\?|$)/i;
 
 export default function Blog() {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get(`${API}/blog`).then((r) => setItems(r.data.items || []));
+    axios
+      .get(`${API}/blog`)
+      .then((r) => setItems(r.data.items || []))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -48,7 +53,28 @@ export default function Blog() {
       </section>
 
       <section className="border-t border-black px-6 md:px-10 py-16 md:py-24">
-        {items.length === 0 ? (
+        {loading ? (
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+            data-testid="blog-loading-state"
+            aria-busy="true"
+            aria-label="A carregar os artigos"
+          >
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="flex flex-col">
+                <Skeleton className="w-full h-64 md:h-72 bg-black/[0.07] border border-black/10" />
+                <div className="mt-5 flex items-baseline justify-between">
+                  <Skeleton className="h-3 w-10 bg-black/[0.07]" />
+                  <Skeleton className="h-3 w-20 bg-black/[0.07]" />
+                </div>
+                <Skeleton className="mt-4 h-8 w-4/5 bg-black/[0.07]" />
+                <Skeleton className="mt-3 h-4 w-full bg-black/[0.07]" />
+                <Skeleton className="mt-2 h-4 w-5/6 bg-black/[0.07]" />
+                <Skeleton className="mt-4 h-3 w-24 bg-black/[0.07]" />
+              </div>
+            ))}
+          </div>
+        ) : items.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,8 +102,7 @@ export default function Blog() {
                 to={`/blog/${p.slug}`}
                 key={p.id}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: (i % 3) * 0.08, ease: [0.19, 1, 0.22, 1] }}
                 className="flex flex-col group"
                 data-testid={`blog-${p.id}`}

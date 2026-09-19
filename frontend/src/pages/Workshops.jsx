@@ -4,16 +4,19 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import VideoGallery from "@/components/VideoGallery";
 import Seo from "@/components/Seo";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 export default function Workshops() {
   const [workshop, setWorkshop] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${API}/workshops`)
-      .then((r) => setWorkshop((r.data.items || [])[0] || null));
+      .then((r) => setWorkshop((r.data.items || [])[0] || null))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -40,6 +43,32 @@ export default function Workshops() {
           </motion.h1>
         </div>
       </section>
+
+      {loading && (
+        <section
+          className="border-t border-black px-6 md:px-10 py-16 md:py-24"
+          data-testid="workshops-loading-state"
+          aria-busy="true"
+          aria-label="A carregar os workshops"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <Skeleton className="h-9 w-32 bg-black/[0.07] border border-black/10" />
+            <Skeleton className="h-3 w-40 bg-black/[0.07]" />
+          </div>
+          <div className="grid grid-cols-12 gap-6 md:gap-16">
+            <div className="col-span-12 md:col-span-7">
+              <Skeleton className="h-12 md:h-16 w-4/5 bg-black/[0.07]" />
+              <Skeleton className="mt-4 h-12 md:h-16 w-3/5 bg-black/[0.07]" />
+              <Skeleton className="mt-8 h-5 w-full bg-black/[0.07]" />
+              <Skeleton className="mt-3 h-5 w-11/12 bg-black/[0.07]" />
+              <Skeleton className="mt-3 h-5 w-4/5 bg-black/[0.07]" />
+            </div>
+            <div className="col-span-12 md:col-span-5">
+              <Skeleton className="h-64 md:h-80 w-full bg-black/[0.07] border border-black/10" />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Featured workshop — single */}
       {workshop && (

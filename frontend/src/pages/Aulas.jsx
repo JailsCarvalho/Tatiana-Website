@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import LessonVideoGallery from "@/components/LessonVideoGallery";
 import Seo from "@/components/Seo";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -54,7 +55,31 @@ export default function Aulas() {
 
       <section className="border-t border-black" data-testid="aulas-course-explorer">
         {loading ? (
-          <p className="px-6 md:px-10 py-24 num-marker text-black/50">— A carregar</p>
+          <div
+            className="grid grid-cols-12"
+            data-testid="aulas-loading-state"
+            aria-busy="true"
+            aria-label="A carregar as aulas"
+          >
+            <aside className="col-span-12 md:col-span-4 border-b border-black md:border-b-0 md:border-r md:border-black px-6 md:px-10 py-10 md:py-16">
+              <Skeleton className="h-3 w-40 bg-black/[0.07] mb-7" />
+              <div className="border-t border-black">
+                {[0, 1, 2, 3].map((i) => (
+                  <div key={i} className="border-b border-black/15 py-5">
+                    <Skeleton className="h-5 w-3/4 bg-black/[0.07]" />
+                  </div>
+                ))}
+              </div>
+            </aside>
+            <div className="col-span-12 md:col-span-8 px-6 md:px-10 py-10 md:py-16">
+              <Skeleton className="h-3 w-24 bg-black/[0.07]" />
+              <Skeleton className="mt-6 h-12 md:h-16 w-3/4 bg-black/[0.07]" />
+              <Skeleton className="mt-8 h-5 w-full bg-black/[0.07]" />
+              <Skeleton className="mt-3 h-5 w-11/12 bg-black/[0.07]" />
+              <Skeleton className="mt-3 h-5 w-4/5 bg-black/[0.07]" />
+              <Skeleton className="mt-10 h-64 md:h-80 w-full bg-black/[0.07] border border-black/10" />
+            </div>
+          </div>
         ) : courses.length === 0 ? (
           <div className="px-6 md:px-10 py-24 md:py-40" data-testid="aulas-empty-state">
             <h2 className="display text-4xl md:text-6xl leading-[0.95]">
