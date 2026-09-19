@@ -30,11 +30,13 @@ from typing import TypedDict
 from fastapi import UploadFile
 
 UPLOAD_DIR = Path(__file__).parent / "uploads"
-# Só criamos a pasta quando o disco é mesmo usado (dev local); em produção
-# (Vercel) o sistema de ficheiros da função é só de leitura e isto rebentava
-# o arranque de toda a aplicação, mesmo sem nenhum upload ter sido pedido.
-if not os.environ.get("BLOB_READ_WRITE_TOKEN"):
+try:
     UPLOAD_DIR.mkdir(exist_ok=True)
+except OSError:
+    # Sistema de ficheiros só de leitura (função serverless). Em produção os
+    # uploads vão para a Vercel Blob Storage e esta pasta nunca é usada — não
+    # pode ser aqui que o arranque de toda a aplicação fica preso.
+    pass
 
 MAX_UPLOAD_BYTES = 80 * 1024 * 1024  # 80MB — chega para vídeos curtos do atelier
 # Abaixo disto vai num único pedido; acima, em partes. Fica com margem clara
