@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { toast } from "sonner";
-import api from "@/lib/api";
+import { uploadFile } from "@/lib/upload";
 
 const VIDEO_EXT = /\.(mp4|webm|mov)(\?|$)/i;
 
@@ -33,9 +33,7 @@ export default function VideoManager({ videos, onChange }) {
     if (!file) return;
     setUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const { data } = await api.post("/admin/uploads", formData);
+      const data = await uploadFile(file);
       onChange([...videos, data.url]);
       toast("Ficheiro carregado.");
     } catch (err) {
