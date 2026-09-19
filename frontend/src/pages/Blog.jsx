@@ -62,7 +62,7 @@ export default function Blog() {
           >
             {[0, 1, 2].map((i) => (
               <div key={i} className="flex flex-col">
-                <Skeleton className="w-full h-64 md:h-72 bg-black/[0.07] border border-black/10" />
+                <Skeleton className="w-full aspect-[4/5] bg-black/[0.07] border border-black/10" />
                 <div className="mt-5 flex items-baseline justify-between">
                   <Skeleton className="h-3 w-10 bg-black/[0.07]" />
                   <Skeleton className="h-3 w-20 bg-black/[0.07]" />
@@ -112,7 +112,7 @@ export default function Blog() {
                     VIDEO_EXT.test(p.cover_image_url) ? (
                       <video
                         src={p.cover_image_url}
-                        className="w-full h-64 md:h-72 object-cover"
+                        className="w-full aspect-[4/5] object-cover"
                         muted
                         loop
                         playsInline
@@ -122,14 +122,14 @@ export default function Blog() {
                       <img
                         src={p.cover_image_url}
                         alt=""
-                        className="w-full h-64 md:h-72 object-cover"
+                        className="w-full aspect-[4/5] object-cover"
                       />
                     )
                   ) : (
                     <img
                       src={FALLBACK_THUMBS[i % FALLBACK_THUMBS.length]}
                       alt=""
-                      className="w-full h-64 md:h-72 object-cover"
+                      className="w-full aspect-[4/5] object-cover"
                     />
                   )}
                 </div>
