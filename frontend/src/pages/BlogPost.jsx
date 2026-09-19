@@ -31,7 +31,12 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <div data-testid="blog-post-loading-state" aria-busy="true" aria-label="A carregar o artigo">
+      <div
+        className="mx-auto w-full max-w-[1200px]"
+        data-testid="blog-post-loading-state"
+        aria-busy="true"
+        aria-label="A carregar o artigo"
+      >
         <header className="pt-28 md:pt-36 pb-12 md:pb-16 px-6 md:px-10">
           <Skeleton className="h-3 w-24 bg-black/[0.07]" />
           <Skeleton className="mt-6 h-3 w-56 bg-black/[0.07]" />
@@ -40,7 +45,7 @@ export default function BlogPost() {
           <Skeleton className="mt-8 h-6 w-full max-w-2xl bg-black/[0.07]" />
         </header>
         <div className="border-t border-black">
-          <Skeleton className="w-full h-[46vh] md:h-[64vh] bg-black/[0.07]" />
+          <Skeleton className="w-full aspect-[4/5] bg-black/[0.07]" />
         </div>
         <div className="border-t border-black px-6 md:px-10 py-16 md:py-24">
           <div className="grid grid-cols-12">
@@ -82,7 +87,7 @@ export default function BlogPost() {
   }
 
   return (
-    <article data-testid="page-blog-post">
+    <article className="mx-auto w-full max-w-[1200px]" data-testid="page-blog-post">
       <Seo
         title={`${post.title} | Atelier Galeria Ícone Coimbra`}
         description={post.excerpt || post.title}
@@ -119,7 +124,7 @@ export default function BlogPost() {
           {VIDEO_EXT.test(post.cover_image_url) ? (
             <video
               src={post.cover_image_url}
-              className="w-full h-[46vh] md:h-[64vh] object-cover"
+              className="w-full aspect-[4/5] object-contain bg-black/[0.03]"
               controls
               playsInline
             />
@@ -127,7 +132,7 @@ export default function BlogPost() {
             <img
               src={post.cover_image_url}
               alt=""
-              className="w-full h-[46vh] md:h-[64vh] object-cover"
+              className="w-full aspect-[4/5] object-contain bg-black/[0.03]"
             />
           )}
         </div>
