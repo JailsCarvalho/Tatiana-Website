@@ -30,7 +30,11 @@ from typing import TypedDict
 from fastapi import UploadFile
 
 UPLOAD_DIR = Path(__file__).parent / "uploads"
-UPLOAD_DIR.mkdir(exist_ok=True)
+# Só criamos a pasta quando o disco é mesmo usado (dev local); em produção
+# (Vercel) o sistema de ficheiros da função é só de leitura e isto rebentava
+# o arranque de toda a aplicação, mesmo sem nenhum upload ter sido pedido.
+if not os.environ.get("BLOB_READ_WRITE_TOKEN"):
+    UPLOAD_DIR.mkdir(exist_ok=True)
 
 MAX_UPLOAD_BYTES = 80 * 1024 * 1024  # 80MB — chega para vídeos curtos do atelier
 # Abaixo disto vai num único pedido; acima, em partes. Fica com margem clara

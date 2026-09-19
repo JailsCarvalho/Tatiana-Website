@@ -45,7 +45,11 @@ app.include_router(api_router)
 
 # Ficheiros enviados pelo painel — só em desenvolvimento local (ver storage.py:
 # em produção na Vercel isto passa a Vercel Blob Storage, sem disco próprio).
-app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+# A pasta só existe quando storage.py a cria (fora do caso Blob), por isso o
+# mount também fica condicional — montar sobre uma pasta inexistente rebenta
+# o arranque da aplicação.
+if not os.environ.get("BLOB_READ_WRITE_TOKEN"):
+    app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 # Com autenticação por cookie, a origem tem de ser explícita: o browser recusa
 # `allow_origins=["*"]` em conjunto com credenciais.
