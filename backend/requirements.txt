@@ -18,4 +18,4 @@ python-multipart>=0.0.9
 # Vercel Blob Storage — só entra em ação quando BLOB_READ_WRITE_TOKEN existe
 # (produção na Vercel); em desenvolvimento local os uploads vão para disco
 # e este pacote fica sem uso. Ver backend/storage.py.
-vercel
+vercel==0.11.3

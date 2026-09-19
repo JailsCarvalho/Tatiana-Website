@@ -121,10 +121,9 @@ async def multipart_start(filename: str) -> MultipartSession:
     key = f"{uuid.uuid4().hex}{ext}"
 
     if blob_configured():
-        from vercel.blob import AsyncBlobClient
+        from vercel.blob import create_multipart_upload_async
 
-        client = AsyncBlobClient()
-        upload = await client.create_multipart_upload(
+        upload = await create_multipart_upload_async(
             key,
             access="public",
             content_type=_guess_content_type(key),
@@ -139,10 +138,9 @@ async def multipart_start(filename: str) -> MultipartSession:
 
 async def multipart_part(*, upload_id: str, key: str, part_number: int, chunk: bytes) -> dict:
     if blob_configured():
-        from vercel.blob import AsyncBlobClient
+        from vercel.blob import upload_part_async
 
-        client = AsyncBlobClient()
-        part = await client.upload_part(
+        part = await upload_part_async(
             key,
             chunk,
             access="public",
@@ -168,18 +166,16 @@ async def multipart_complete(
     *, upload_id: str, key: str, parts: list[dict], base_url: str
 ) -> UploadResult:
     if blob_configured():
-        from vercel.blob import AsyncBlobClient, Part
+        from vercel.blob import MultipartPart, complete_multipart_upload_async
 
-        client = AsyncBlobClient()
-        part_objs = [Part(part_number=p["part_number"], etag=p["etag"]) for p in parts]
-        blob = await client.complete_multipart_upload(
+        part_objs = [MultipartPart(part_number=p["part_number"], etag=p["etag"]) for p in parts]
+        blob = await complete_multipart_upload_async(
             key,
             part_objs,
             access="public",
             upload_id=upload_id,
             key=key,
             content_type=_guess_content_type(key),
-            add_random_suffix=False,
         )
         return {"url": blob.url, "filename": key, "size": 0}
 
