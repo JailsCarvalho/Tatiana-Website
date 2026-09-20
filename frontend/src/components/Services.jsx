@@ -16,10 +16,10 @@ const services = [
   },
   {
     n: "02",
-    title: "Workshops & imersões",
+    title: "Workshops",
     subtitle: "Programa 2026 · em datas curtas",
     text:
-      "Fins-de-semana e imersões de vários dias, em torno de um tema. Do gesto ao retrato, do carvão à cor, para quem quer aprofundar em pouco tempo.",
+      "Vários dias, em torno de um tema. Do gesto ao retrato, do carvão à cor, para quem quer aprofundar em pouco tempo.",
     to: "/workshops",
     cta: "Ver workshops",
     for: "Para quem quer mergulhar num tema específico.",

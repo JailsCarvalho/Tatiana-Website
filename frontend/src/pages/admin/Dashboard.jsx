@@ -18,7 +18,7 @@ const SECTIONS = [
     key: "workshops",
     number: "02",
     title: "Workshops",
-    description: "Programas e imersões, com datas, vagas e inscrições.",
+    description: "Programas com datas, vagas e inscrições.",
     endpoint: "/workshops",
     unit: "workshop(s) activo(s)",
     href: "/admin/workshops",

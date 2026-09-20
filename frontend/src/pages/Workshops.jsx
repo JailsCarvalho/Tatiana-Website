@@ -23,7 +23,7 @@ export default function Workshops() {
     <div data-testid="page-workshops">
       <Seo
         title="Workshops de Pintura em Coimbra | Atelier Galeria Ícone"
-        description="Workshops e imersões de pintura em Coimbra para adultos e crianças. Explore técnicas de pintura e desenho em grupo no Atelier Galeria Ícone."
+        description="Workshops de pintura em Coimbra para adultos e crianças. Explore técnicas de pintura e desenho em grupo no Atelier Galeria Ícone."
         path="/workshops"
         keywords="Workshop de pintura em Coimbra, Aulas de pintura em Coimbra, Aulas de arte em Coimbra, Curso de pintura em Coimbra"
       />
@@ -39,7 +39,7 @@ export default function Workshops() {
             transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
             className="col-span-12 md:col-span-9 display text-4xl md:text-5xl lg:text-4xl"
           >
-            Workshops <span className="italic">&</span> Imersões
+            Workshops 
           </motion.h1>
         </div>
       </section>
