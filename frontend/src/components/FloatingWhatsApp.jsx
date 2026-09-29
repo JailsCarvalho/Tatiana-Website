@@ -5,11 +5,18 @@ const WHATSAPP_ICON_URL =
   "https://customer-assets-lxgj4vgw.emergentagent.net/job_art-showcase-dynamic/artifacts/yby9oa8x_whatsapp.png";
 
 export default function FloatingWhatsApp() {
+  // O botão abre noutro separador, por isso esta página não é descarregada e o
+  // evento tem tempo de sair — não é preciso adiar a navegação com event_callback.
+  const handleClick = () => {
+    window.gtag?.("event", "whatsapp_click");
+  };
+
   return (
     <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noreferrer"
+      onClick={handleClick}
       aria-label="Contactar pelo WhatsApp"
       title="Contactar pelo WhatsApp"
       data-testid="floating-whatsapp-button"
