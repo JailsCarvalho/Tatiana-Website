@@ -28,6 +28,8 @@ const services = [
     n: "03",
     title: "Preparação para Exame — Desenho 12.º Ano",
     subtitle: "Exame Nacional · Desenho A",
+    image:
+      "https://erngphbhlvwpddre.public.blob.vercel-storage.com/cd21da20a289446d861e48906afe6b57.jpg",
     text: [
       "Preparação específica para o Exame Nacional de Desenho A, destinada a alunos do 12.º ano que pretendem desenvolver e aperfeiçoar as suas competências de desenho.",
       "Trabalhamos observação, proporção, composição, perspectiva, representação do espaço, luz e sombra, figura humana e diferentes técnicas e materiais, de acordo com as exigências do exame.",
@@ -103,6 +105,13 @@ export default function Services() {
                 {s.subtitle}
               </span>
             </div>
+            {s.image && (
+              <img
+                src={s.image}
+                alt=""
+                className="spotlight float-right ml-6 mb-4 w-28 md:w-36 aspect-[4/5] object-contain border border-black bg-black/[0.03]"
+              />
+            )}
             <h3 className="display text-4xl md:text-5xl lg:text-6xl leading-none mb-6 group-hover:italic transition-all duration-500">
               {s.title}
             </h3>
