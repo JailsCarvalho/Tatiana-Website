@@ -24,8 +24,7 @@ function LessonVideoCard({ src, index, onOpen, isOnly }) {
       type="button"
       onClick={() => onOpen(index)}
       initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, delay: index * 0.08, ease: [0.19, 1, 0.22, 1] }}
       className={`group relative overflow-hidden border border-black bg-black text-left ${
         isOnly ? "md:col-span-3" : index === 0 ? "md:col-span-2" : ""

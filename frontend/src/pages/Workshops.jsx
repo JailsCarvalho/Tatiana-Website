@@ -79,8 +79,7 @@ export default function Workshops() {
           {/* Status pill */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="flex items-center gap-4 mb-8"
           >
@@ -97,8 +96,7 @@ export default function Workshops() {
             <div className="col-span-12 md:col-span-7">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
                 className="display text-5xl md:text-7xl lg:text-8xl leading-[0.9]"
               >
@@ -108,8 +106,7 @@ export default function Workshops() {
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.1 }}
                 className="mt-12 font-serif text-2xl md:text-3xl leading-snug italic text-black/85 max-w-2xl"
               >
@@ -118,8 +115,7 @@ export default function Workshops() {
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.15 }}
                 className="mt-8 font-serif text-xl md:text-2xl leading-snug text-black/85 max-w-2xl"
               >
@@ -128,8 +124,7 @@ export default function Workshops() {
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.2 }}
                 className="mt-6 text-base md:text-lg leading-relaxed text-black/70 max-w-xl"
               >
@@ -138,8 +133,7 @@ export default function Workshops() {
 
               <motion.p
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.9, delay: 0.25 }}
                 className="mt-8 num-marker text-black/60"
               >
@@ -150,8 +144,7 @@ export default function Workshops() {
                 href="#contacto"
                 data-testid="workshop-cta"
                 initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3 }}
                 className="mt-10 inline-block border border-black px-8 py-4 text-[11px] tracking-[0.3em] uppercase hover-invert"
               >
