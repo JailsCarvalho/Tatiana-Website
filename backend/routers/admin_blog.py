@@ -1,5 +1,6 @@
 """CRUD de artigos do blog para o painel. Todas as rotas exigem sessão de admin."""
 
+import re
 import uuid
 from datetime import datetime, timezone
 from typing import List
@@ -16,12 +17,28 @@ from slugs import unique_slug
 
 router = APIRouter(prefix="/admin/blog", tags=["admin:blog"])
 
+_VIDEO_EXT = re.compile(r"\.(mp4|webm|mov)(\?|$)", re.IGNORECASE)
+
 
 async def _get_or_404(session: AsyncSession, post_id: uuid.UUID) -> BlogPost:
     post = await session.get(BlogPost, post_id)
     if post is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Artigo não encontrado.")
     return post
+
+
+def _validar_capa(payload: BlogPostIn) -> None:
+    if payload.cover_image_url is None:
+        return
+    if payload.cover_image_url not in payload.media:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            "A capa tem de ser um dos ficheiros já carregados no artigo.",
+        )
+    if _VIDEO_EXT.search(payload.cover_image_url):
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST, "A capa não pode ser um vídeo — escolha uma imagem."
+        )
 
 
 @router.get("", response_model=List[BlogPostAdminOut])
@@ -39,6 +56,7 @@ async def create_post(
     session: AsyncSession = Depends(get_session),
     _: AdminUser = Depends(get_current_admin),
 ):
+    _validar_capa(payload)
     slug = await unique_slug(session, BlogPost, payload.slug or payload.title)
     post = BlogPost(**payload.model_dump(exclude={"slug"}), slug=slug)
     # A data de publicação marca-se ao publicar pela primeira vez, não em cada
@@ -66,6 +84,7 @@ async def update_post(
     session: AsyncSession = Depends(get_session),
     _: AdminUser = Depends(get_current_admin),
 ):
+    _validar_capa(payload)
     post = await _get_or_404(session, post_id)
     was_published = post.published
 

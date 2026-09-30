@@ -46,7 +46,13 @@ class ContactMessage(TimestampMixin, Base):
 
 
 class BlogPost(TimestampMixin, Base):
-    """Artigos do Diário de Bordo. `content_md` é Markdown."""
+    """Artigos da Agenda. `content_md` é Markdown.
+
+    `media` é a galeria de imagens/vídeos do artigo (mesmo padrão do `videos`
+    das Aulas). `cover_image_url` aponta sempre para um URL já presente em
+    `media` — é apenas qual delas se mostra como capa nas listagens, nunca um
+    upload à parte.
+    """
 
     __tablename__ = "blog_posts"
 
@@ -55,6 +61,7 @@ class BlogPost(TimestampMixin, Base):
     title: Mapped[str] = mapped_column(String(250), nullable=False)
     excerpt: Mapped[str | None] = mapped_column(Text)
     content_md: Mapped[str] = mapped_column(Text, server_default="", nullable=False)
+    media: Mapped[list] = mapped_column(JSONB, server_default="[]", nullable=False)
     cover_image_url: Mapped[str | None] = mapped_column(Text)
     read_time: Mapped[str | None] = mapped_column(String(40))
     published: Mapped[bool] = mapped_column(Boolean, server_default="false", nullable=False)

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Seo from "@/components/Seo";
 import { Skeleton } from "@/components/ui/skeleton";
+import ArticleMediaGallery from "@/components/ArticleMediaGallery";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const VIDEO_EXT = /\.(mp4|webm|mov)(\?|$)/i;
@@ -147,6 +148,10 @@ export default function BlogPost() {
           </div>
         </div>
       </div>
+
+      <ArticleMediaGallery
+        items={(post.media || []).filter((url) => url !== post.cover_image_url)}
+      />
 
       <div className="border-t border-black px-6 md:px-10 py-12">
         <Link to="/blog" className="num-marker link-underline">

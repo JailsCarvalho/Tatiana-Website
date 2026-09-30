@@ -5,11 +5,12 @@ import ReactMarkdown from "react-markdown";
 import api from "@/lib/api";
 import { Field, TextInput, TextArea, PublishedToggle } from "@/components/admin/FormField";
 import ConfirmButton from "@/components/admin/ConfirmButton";
-import MediaUploader from "@/components/admin/MediaUploader";
+import MediaManager from "@/components/admin/MediaManager";
 
 const EMPTY = {
   title: "",
   excerpt: "",
+  media: [],
   cover_image_url: "",
   read_time: "",
   content_md: "",
@@ -109,13 +110,23 @@ export default function BlogEditor() {
         <Field label="Resumo" wide hint="Mostrado na listagem do blog.">
           <TextArea rows={2} value={form.excerpt} onChange={update("excerpt")} />
         </Field>
-        <Field label="Imagem de capa" wide hint="Carregada directamente do computador — imagem ou vídeo.">
-          <MediaUploader
-            value={form.cover_image_url}
-            onChange={(url) => setForm((current) => ({ ...current, cover_image_url: url }))}
-            testid="blog-cover"
-          />
-        </Field>
+        <div className="border-b border-black py-4">
+          <div className="grid grid-cols-12 gap-4 items-start">
+            <span className="col-span-12 md:col-span-3 num-marker text-black/60 pt-3">
+              — Imagens e vídeos
+            </span>
+            <div className="col-span-12 md:col-span-9">
+              <MediaManager
+                media={form.media}
+                onMediaChange={(media) => setForm((current) => ({ ...current, media }))}
+                cover={form.cover_image_url}
+                onCoverChange={(cover_image_url) =>
+                  setForm((current) => ({ ...current, cover_image_url }))
+                }
+              />
+            </div>
+          </div>
+        </div>
         <Field label="Tempo de leitura" hint="Ex.: 4 min">
           <TextInput value={form.read_time} onChange={update("read_time")} />
         </Field>

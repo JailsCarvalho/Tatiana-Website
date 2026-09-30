@@ -95,6 +95,7 @@ class BlogPostOut(BaseModel):
     title: str
     excerpt: str | None = None
     content_md: str | None = None
+    media: list[str] = []
     cover_image_url: str | None = None
     published_at: datetime | None = None
     # Chaves que a página de blog já usa na listagem editorial
@@ -170,6 +171,7 @@ class BlogPostIn(BaseModel):
     title: str = Field(min_length=1, max_length=250)
     excerpt: str | None = Field(default=None, max_length=500)
     content_md: str = ""
+    media: list[str] = []
     cover_image_url: str | None = None
     read_time: str | None = Field(default=None, max_length=40)
     published: bool = False
@@ -183,6 +185,7 @@ class BlogPostAdminOut(BaseModel):
     title: str
     excerpt: str | None = None
     content_md: str
+    media: list[str] = []
     cover_image_url: str | None = None
     read_time: str | None = None
     published: bool
